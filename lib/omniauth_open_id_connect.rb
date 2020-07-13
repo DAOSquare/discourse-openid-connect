@@ -150,11 +150,11 @@ module ::OmniAuth
       info do
         data_source = options.use_userinfo ? userinfo_response : id_token_info
         prune!(
-          name: data_source['name'],
+          name: data_source['nickname'],
           email: data_source['email'],
           first_name: data_source['given_name'],
           last_name: data_source['family_name'],
-          nickname: data_source['preferred_username'],
+          nickname: data_source['nickname'],
           picture: data_source['picture']
         )
       end
