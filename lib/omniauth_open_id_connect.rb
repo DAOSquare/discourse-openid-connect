@@ -125,7 +125,7 @@ module ::OmniAuth
             verify_sub: false,
             verify_expiration: true,
             verify_not_before: true,
-            verify_iat: true,
+            verify_iat: false,
             verify_jti: false
           )
           verbose_log("Verified JWT\n\n#{decoded.to_yaml}")
@@ -155,7 +155,7 @@ module ::OmniAuth
           first_name: data_source['given_name'],
           last_name: data_source['family_name'],
           nickname: data_source['nickname'],
-          picture: data_source['picture']
+          image: data_source['picture']
         )
       end
 
