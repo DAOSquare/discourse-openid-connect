@@ -121,6 +121,7 @@ describe OmniAuth::Strategies::OpenIDConnect do
           exp: Time.now.to_i + 120,
           nonce: auth_params[:nonce],
           name: "My Auth Token Name",
+          nickname: "My ENS Name",
           email: "tokenemail@example.com"
         }
         @token = JWT.encode payload, nil, 'none'
@@ -148,7 +149,7 @@ describe OmniAuth::Strategies::OpenIDConnect do
         it "fetches auth token correctly, and uses it for user info" do
           expect(subject.callback_phase[0]).to eq(200)
           expect(subject.uid).to eq("someuserid")
-          expect(subject.info[:name]).to eq("My Auth Token Name")
+          expect(subject.info[:name]).to eq("My ENS Name")
           expect(subject.info[:email]).to eq("tokenemail@example.com")
         end
 
@@ -178,6 +179,7 @@ describe OmniAuth::Strategies::OpenIDConnect do
             to_return(status: 200, body: {
               sub: "someuserid",
               name: "My Userinfo Name",
+              nickname: "My ENS Name",
               email: "userinfoemail@example.com",
             }.to_json, headers: { "Content-Type" => "application/json" })
         end
@@ -185,7 +187,7 @@ describe OmniAuth::Strategies::OpenIDConnect do
         it "fetches credentials and auth token correctly" do
           expect(subject.callback_phase[0]).to eq(200)
           expect(subject.uid).to eq("someuserid")
-          expect(subject.info[:name]).to eq("My Userinfo Name")
+          expect(subject.info[:name]).to eq("My ENS Name")
           expect(subject.info[:email]).to eq("userinfoemail@example.com")
         end
       end
