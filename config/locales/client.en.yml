@@ -3,5 +3,5 @@ en:
     login:
       oidc:
         name: "OpenID Connect"
-        title: "with OpenID Connect"
-        message: "Authenticating with OpenID Connect"
+        title: "with Ethereum"
+        message: "Authenticating with Ethereum"
